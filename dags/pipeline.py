@@ -1,27 +1,26 @@
-from airflow import DAG
-from airflow.operators.empty import EmptyOperator
-from airflow.operators.bash import BashOperator
+from datetime import datetime, timedelta
 
-from datetime import datetime
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.operators.dummy_operator import DummyOperator
+
 
 with DAG(
-    dag_id='first_sample_dag',
-    start_date=datetime(2022, 5, 28),
-    schedule_interval='0 0 * * *'
+    "data_pipeline",
+    default_args={
+        "depends_on_past": False,
+        "retries": 1,
+        "retry_delay": timedelta(minutes=5),
+    },
+    description="A simple tutorial DAG",
+    start_date=datetime(2022, 8, 5),
+    catchup=False,
 ) as dag:
-
-    start_task = EmptyOperator(
-        task_id='start'
-    )
-
+    start_task = DummyOperator(task_id="start")
     print_hello_world = BashOperator(
-        task_id='print_hello_world',
-        bash_command='echo "HelloWorld!"'
+        task_id="print_hello_world", bash_command='echo "HelloWorld!"'
     )
-
-    end_task = EmptyOperator(
-        task_id='end'
-    )
+    end_task = DummyOperator(task_id="end")
 
 start_task >> print_hello_world
 print_hello_world >> end_task
