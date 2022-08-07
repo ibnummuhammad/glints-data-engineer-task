@@ -23,7 +23,7 @@ def _extract_data():
 
 
 with DAG(
-    "pipeline",
+    "data-pipeline",
     default_args={
         "depends_on_past": False,
         "retries": 0,
