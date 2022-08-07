@@ -2,7 +2,7 @@
 This is a home assignment task for Data Engineer role at Glints.
 
 # Backgrounds
-This repository is addressed as submission of the [technical assignment](https://gist.github.com/seahyc/5b8d1fbc9126130520fcdb8b8e543198) for Data Engineer position at Glints. This repository contains a solution in maintaining the serviceability of Data Warehouse use case. Airflow is utilize as data pipeline orchestrator to extract data from Postgres datasource into target table in another Postgres database.
+This repository is addressed as submissions of the [technical assignment](https://gist.github.com/seahyc/5b8d1fbc9126130520fcdb8b8e543198) for Data Engineer position at Glints. This repository contains a solution in maintaining the serviceability of Data Warehouse use case. Airflow is utilized as data pipeline orchestrator to extract data from Postgres datasource into target table in another Postgres database.
 
 # Information
 ## a) Environments
