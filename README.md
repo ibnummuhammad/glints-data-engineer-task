@@ -1,11 +1,13 @@
 # glints-data-engineer-task
 This is a home assignment task for Data Engineer role at Glints.
 
+# Backgrounds
+
 # Requirements
 * Linux environment
 * Docker
 
-# How to Run
+# How-to-Run
 Before we can run the Airflow, we need to do some preparation.
 
 ## 1. Deploy containers
@@ -29,7 +31,34 @@ Set-up some initial preparation, such as table data source and airflow postgres 
 
 This command will set neccesary initialization in order to make the airflow data pipeline works automatically.
 
-## 3. Inspect the data output
+## 3. Run the data pipeline
+From here, we can start the extraction of the data source and load it into the destination table.
+
+## a. Open airflow dashboard
+First, you need to go to http://localhost:5884/ to open the Airflow dashboard by using credential below.
+
+    username: airflow
+    password: airflow
+
+![](./images/airflow-homepage.png "Airflow Homepage")
+
+-------------------------------------------------------
+
+## b. Select 'data-pipeline' DAG
+Then, activate the 'data-pipeline' dag by clicking the switch button, the open the dag.
+
+![](./images/airflow-dag.png "Airflow DAG")
+
+-------------------------------------------------------
+
+## c. Check the dag pipeline status
+Now the source data has been extracted into the destination table.
+
+![](./images/airflow-graph.png "Airflow Graph")
+
+-------------------------------------------------------
+
+## 4. Inspect the data output
 When the data extraction is done, we can inspect the output data by running the code below.
 
     make inspect
@@ -57,7 +86,7 @@ We can inspect the output data that has been stored in the postgres destination 
      17 |        1 |   109 | 2019-09-23
      18 |        1 |    11 | 2019-09-24
 
-## 4. Stop the services
+## 5. Stop the services
 After everything is done, we can shut down our services by executing the code below.
 
     make stop
