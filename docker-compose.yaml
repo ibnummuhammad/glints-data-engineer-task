@@ -13,6 +13,11 @@ x-common:
     - ./plugins:/opt/airflow/plugins
     - /var/run/docker.sock:/var/run/docker.sock
 
+x-data:
+  &data
+  volumes:
+    - ./data:/opt/data
+
 x-depends-on:
   &depends-on
   depends_on:
@@ -39,6 +44,7 @@ services:
       - .env
 
   postgres_src:
+    <<: *data
     image: postgres:13
     container_name: postgres_src
     ports:
