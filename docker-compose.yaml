@@ -13,11 +13,6 @@ x-common:
     - ./plugins:/opt/airflow/plugins
     - /var/run/docker.sock:/var/run/docker.sock
 
-x-data:
-  &data
-  volumes:
-    - ./data:/opt/data
-
 x-depends-on:
   &depends-on
   depends_on:
@@ -44,7 +39,6 @@ services:
       - .env
 
   postgres_src:
-    <<: *data
     image: postgres:13
     container_name: postgres_src
     ports:
@@ -53,8 +47,11 @@ services:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
       retries: 5
+    volumes:
+      - ./data:/opt/data
+      - ./query:/opt/query
     env_file:
-      - .env_src
+      - .env
 
   postgres_dst:
     image: postgres:13
@@ -66,7 +63,7 @@ services:
       interval: 5s
       retries: 5
     env_file:
-      - .env_dst
+      - .env
 
   scheduler:
     <<: *common
