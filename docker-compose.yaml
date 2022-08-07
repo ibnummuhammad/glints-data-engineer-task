@@ -18,6 +18,10 @@ x-depends-on:
   depends_on:
     postgres:
       condition: service_healthy
+    postgres_src:
+      condition: service_healthy
+    postgres_dst:
+      condition: service_healthy
     airflow-init:
       condition: service_completed_successfully
 
