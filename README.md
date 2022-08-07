@@ -10,11 +10,11 @@ This repository is addressed as submission of the [technical assignment](https:/
 * Docker
 
 ## b) Container services that'll be created
-* Airflow Webserver
-* Airflow Scheduler
-* Airflow Postgres Database
-* Source Postgres Database
-* Target Postgres Database
+* Airflow Webserver (airflow-webserver)
+* Airflow Scheduler (airflow-scheduler)
+* Airflow Postgres Database (postgres)
+* Source Postgres Database (postgres_src)
+* Target Postgres Database (postgres_dst)
 
 ## c) Credentials
 Airflow
