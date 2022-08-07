@@ -31,14 +31,14 @@ Set-up some initial preparation, such as table data source and airflow postgres 
 
 This command will set neccesary initialization in order to make the airflow data pipeline works automatically, such as.
 
-## a) Setup the postgres database connection
+### a) Setup the postgres database connection
 This initial setup will create the airflow connection to the source database and destination database.
 
 ![](./images/airflow-connections.png "Airflow Connections")
 
 -------------------------------------------------------
 
-## b) Setup the source database data
+### b) Setup the source database data
 This initial setup will store the csv data into the source database.
 
     id,quantity,price,date
@@ -68,7 +68,7 @@ This initial setup will store the csv data into the source database.
 ## 3. Run the data pipeline
 From here, we can start the extraction of the data source and load it into the destination table.
 
-## a) Open airflow dashboard
+### a) Open airflow dashboard
 First, you need to go to http://localhost:5884/ to open the Airflow dashboard by using credential below.
 
     username: airflow
@@ -78,14 +78,14 @@ First, you need to go to http://localhost:5884/ to open the Airflow dashboard by
 
 -------------------------------------------------------
 
-## b) Select 'data-pipeline' DAG
+### b) Select 'data-pipeline' DAG
 Then, activate the 'data-pipeline' dag by clicking the switch button, the open the dag.
 
 ![](./images/airflow-dag.png "Airflow DAG")
 
 -------------------------------------------------------
 
-## c) Check the dag pipeline status
+### c) Check the dag pipeline status
 Now the source data has been extracted into the destination table.
 
 ![](./images/airflow-graph.png "Airflow Graph")
