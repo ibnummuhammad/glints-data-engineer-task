@@ -1,1 +1,0 @@
-\copy (SELECT * FROM sales) to '/opt/data_extract.csv' with csv;
