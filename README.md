@@ -55,7 +55,7 @@ Set-up some initial preparation, such as table data source and airflow postgres 
 
     make setup
 
-This command will set neccesary initialization in order to make the airflow data pipeline works automatically, such as.
+This command will set neccesary initialization in order to make the airflow data pipeline works automatically, such as:
 
 ### a) Setup the postgres database connection
 This initial setup will create the airflow connection to the source database and destination database.
