@@ -47,6 +47,19 @@ with DAG(
             );
         """,
     )
+    create_table_dst = PostgresOperator(
+        task_id="create_table_dst",
+        postgres_conn_id="postgres_dst",
+        sql="""
+            CREATE TABLE IF NOT EXISTS sales(
+                id SERIAL,
+                quantity INT,
+                price INT,
+                date DATE,
+                PRIMARY KEY (id)
+            );
+        """,
+    )
     import_table_source = PostgresOperator(
         task_id="import_table_source",
         postgres_conn_id="postgres_src",
@@ -63,14 +76,14 @@ with DAG(
     load_data = PostgresOperator(
         task_id="load_data",
         postgres_conn_id="postgres_dst",
-        sql="""INSERT INTO sales VALUES
-                ({{ ti.xcom_pull(task_ids='extract_data', key='return_value') }});""",
+        sql="""INSERT INTO sales VALUES {{ ti.xcom_pull(task_ids='extract_data', key='return_value') }};""",
     )
     end_task = DummyOperator(task_id="end")
 
 (
     start_task
     >> create_table_source
+    >> create_table_dst
     >> import_table_source
     >> extract_data
     >> load_data
