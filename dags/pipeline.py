@@ -1,6 +1,4 @@
-import csv
 from datetime import datetime, timedelta
-import json
 
 from airflow import DAG
 from airflow.hooks.postgres_hook import PostgresHook
@@ -66,7 +64,7 @@ with DAG(
         task_id="load_data",
         postgres_conn_id="postgres_dst",
         sql="""INSERT INTO sales VALUES
-                ('{{ ti.xcom_pull(task_ids='extract_data', key='return_value') }}');""",
+                ({{ ti.xcom_pull(task_ids='extract_data', key='return_value') }});""",
     )
     end_task = DummyOperator(task_id="end")
 
