@@ -1,4 +1,4 @@
-deploy:
+start:
 	docker-compose up -d
 
 setup:
