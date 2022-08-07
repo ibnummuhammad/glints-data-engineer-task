@@ -28,46 +28,12 @@ with DAG(
         "depends_on_past": False,
         "retries": 0,
     },
-    description="A simple tutorial DAG",
-    dagrun_timeout=timedelta(minutes=60),
+    description="A simple data pipelining DAG",
+    dagrun_timeout=timedelta(minutes=3),
     start_date=datetime(2022, 8, 5),
     catchup=False,
 ) as dag:
     start_task = DummyOperator(task_id="start")
-    create_table_source = PostgresOperator(
-        task_id="create_table_source",
-        postgres_conn_id="postgres_src",
-        sql="""
-            CREATE TABLE IF NOT EXISTS sales(
-                id SERIAL,
-                quantity INT,
-                price INT,
-                date DATE,
-                PRIMARY KEY (id)
-            );
-        """,
-    )
-    create_table_dst = PostgresOperator(
-        task_id="create_table_dst",
-        postgres_conn_id="postgres_dst",
-        sql="""
-            CREATE TABLE IF NOT EXISTS sales(
-                id SERIAL,
-                quantity INT,
-                price INT,
-                date DATE,
-                PRIMARY KEY (id)
-            );
-        """,
-    )
-    import_table_source = PostgresOperator(
-        task_id="import_table_source",
-        postgres_conn_id="postgres_src",
-        sql="""
-            COPY sales(id, quantity, price, date)
-            FROM '/opt/data/sales_september_2019.csv' DELIMITER ',' CSV HEADER;
-        """,
-    )
     extract_data = PythonOperator(
         task_id="extract_data",
         python_callable=_extract_data,
@@ -80,12 +46,4 @@ with DAG(
     )
     end_task = DummyOperator(task_id="end")
 
-(
-    start_task
-    >> create_table_source
-    >> create_table_dst
-    >> import_table_source
-    >> extract_data
-    >> load_data
-    >> end_task
-)
+start_task >> extract_data >> load_data >> end_task
