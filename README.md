@@ -2,7 +2,7 @@
 This is a home assignment task for Data Engineer role at Glints.
 
 # Backgrounds
-This repository is addressed as submission of the [technical assignment](https://gist.github.com/seahyc/5b8d1fbc9126130520fcdb8b8e543198) for Data Engineer position at Glints. This repository contains a solution in maintaining the serviceability of Data Warehouse use case. Airflow is utilize as data pipeline orchestrator to extract data from Postgres datasource into destination table in another Postgres database.
+This repository is addressed as submission of the [technical assignment](https://gist.github.com/seahyc/5b8d1fbc9126130520fcdb8b8e543198) for Data Engineer position at Glints. This repository contains a solution in maintaining the serviceability of Data Warehouse use case. Airflow is utilize as data pipeline orchestrator to extract data from Postgres datasource into target table in another Postgres database.
 
 # Information
 ## a) Environments
@@ -58,7 +58,7 @@ Set-up some initial preparation, such as table data source and airflow postgres 
 This command will set neccesary initialization in order to make the airflow data pipeline works automatically, such as:
 
 ### a) Setup the postgres database connection
-This initial setup will create the airflow connection to the source database and destination database.
+This initial setup will create the airflow connection to the source database and target database.
 
 ![](./images/airflow-connections.png "Airflow Connections")
 
@@ -92,7 +92,7 @@ This initial setup will store the csv data into the source database.
     22,1,11,2019-09-30
 
 ## 3. Run the data pipeline
-From here, we can start the extraction of the data source and load it into the destination table.
+From here, we can start the extraction of the data source and load it into the target table.
 
 ### a) Open airflow dashboard
 First, you need to go to http://localhost:5884/ to open the Airflow dashboard by using credential below.
@@ -112,7 +112,7 @@ Then, activate the 'data-pipeline' dag by clicking the switch button, the open t
 -------------------------------------------------------
 
 ### c) Check the dag pipeline status
-Now the source data has been extracted into the destination table.
+Now the source data has been extracted into the target table.
 
 ![](./images/airflow-graph.png "Airflow Graph")
 
@@ -123,7 +123,7 @@ When the data extraction is done, we can inspect the output data by running the 
 
     make inspect
 
-We can inspect the output data that has been stored in the postgres destination database with the expected output data as below.
+We can inspect the output data that has been stored in the postgres target database with the expected output data as below.
 
      id | quantity | price |    date    
     ----+----------+-------+------------
