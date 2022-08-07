@@ -9,7 +9,14 @@ This repository is addressed as submission of the [technical assignment](https:/
 * Linux environment
 * Docker
 
-## b) Credentials
+## b) Container services that'll be created
+* Airflow Webserver
+* Airflow Scheduler
+* Airflow Postgres Database
+* Source Postgres Database
+* Target Postgres Database
+
+## c) Credentials
 Airflow
 
     Airflow username: airflow
