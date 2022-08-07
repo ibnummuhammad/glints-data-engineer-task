@@ -2,10 +2,29 @@
 This is a home assignment task for Data Engineer role at Glints.
 
 # Backgrounds
+This repository is addressed as submission of the [technical assignment](https://gist.github.com/seahyc/5b8d1fbc9126130520fcdb8b8e543198) for Data Engineer position at Glints. This repository contains a solution in maintaining the serviceability of Data Warehouse use case. Airflow is utilize as data pipeline orchestrator to extract data from Postgres datasource into destination table in another Postgres database.
 
-# Requirements
+# Information
+## a) Environments
 * Linux environment
 * Docker
+
+## b) Credentials
+Airflow
+
+    Airflow username: airflow
+    Airflow password: airflow
+
+Source Postgres Database
+
+    Source Postgres username: airflow
+    Source Postgres password: airflow
+
+Target Postgres Database
+
+    Target Postgres username: airflow
+    Target Postgres password: airflow
+
 
 # How-to-Run
 Before we can run the Airflow, we need to do some preparation.
