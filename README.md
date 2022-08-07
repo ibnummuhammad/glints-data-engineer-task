@@ -29,7 +29,41 @@ Set-up some initial preparation, such as table data source and airflow postgres 
 
     make setup
 
-This command will set neccesary initialization in order to make the airflow data pipeline works automatically.
+This command will set neccesary initialization in order to make the airflow data pipeline works automatically, such as.
+
+## a) Setup the postgres database connection
+This initial setup will create the airflow connection to the source database and destination database.
+
+![](./images/airflow-connections.png "Airflow Connections")
+
+-------------------------------------------------------
+
+## b) Setup the source database data
+This initial setup will store the csv data into the source database.
+
+    id,quantity,price,date
+    1,1,11,2019-09-01
+    2,1,14,2019-09-02
+    3,1,150,2019-09-03
+    4,1,2,2019-09-04
+    5,1,11,2019-09-05
+    6,1,400,2019-09-06
+    7,1,14,2019-09-07
+    8,1,700,2019-09-08
+    9,1,149,2019-09-12
+    10,1,11,2019-09-13
+    11,1,150,2019-09-14
+    12,1,14,2019-09-15
+    13,1,11,2019-09-16
+    14,4,3,2019-09-17
+    15,1,99,2019-09-18
+    16,1,11,2019-09-22
+    17,1,109,2019-09-23
+    18,1,11,2019-09-24
+    19,1,11,2019-09-25
+    20,1,149,2019-09-27
+    21,2,11,2019-09-29
+    22,1,11,2019-09-30
 
 ## 3. Run the data pipeline
 From here, we can start the extraction of the data source and load it into the destination table.
