@@ -13,7 +13,14 @@ Deploy the docker containers by running code below.
 
     make start
 
-This command will compose up the docker container, then deploy the necessary services.
+This command will compose up the docker container, then deploy the necessary services. You should see the containers status like below.
+
+    CONTAINER ID   IMAGE                  COMMAND                  CREATED         STATUS                   PORTS                              NAMES
+    84e271291563   apache/airflow:2.3.0   "/usr/bin/dumb-init …"   2 minutes ago   Up 2 minutes (healthy)   0.0.0.0:5884->8080/tcp             airflow-webserver
+    08618ce7794a   apache/airflow:2.3.0   "/usr/bin/dumb-init …"   2 minutes ago   Up 2 minutes             8080/tcp, 0.0.0.0:8793->8793/tcp   airflow-scheduler
+    9bc3f7682fe2   postgres:13            "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes (healthy)   5432/tcp                           postgres_src
+    f59365d819ad   postgres:13            "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes (healthy)   0.0.0.0:5434->5432/tcp             postgres
+    a4b957de7db5   postgres:13            "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes (healthy)   5432/tcp                           postgres_dst
 
 ## 2. Set up initial preparation
 Set-up some initial preparation, such as table data source and airflow postgres connections.
