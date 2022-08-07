@@ -46,6 +46,18 @@ services:
     env_file:
       - .env_src
 
+  postgres_dst:
+    image: postgres:13
+    container_name: postgres_dst
+    ports:
+      - "5100:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    env_file:
+      - .env_dst
+
   scheduler:
     <<: *common
     <<: *depends-on
