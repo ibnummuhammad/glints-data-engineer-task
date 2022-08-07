@@ -63,6 +63,8 @@ services:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
       retries: 5
+    volumes:
+      - ./query:/opt/query
     env_file:
       - .env
     networks:
