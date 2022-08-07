@@ -1,7 +1,6 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 
@@ -30,6 +29,14 @@ with DAG(
             );
         """,
     )
+    import_table = PostgresOperator(
+        task_id="import_table",
+        postgres_conn_id="postgres_src",
+        sql="""
+            COPY sales(id, quantity, price, date)
+            FROM '/opt/data/sales_september_2019.csv' DELIMITER ',' CSV HEADER;
+        """,
+    )
     end_task = DummyOperator(task_id="end")
 
-start_task >> create_table >> end_task
+start_task >> create_table >> import_table >> end_task
