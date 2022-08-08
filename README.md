@@ -6,8 +6,8 @@ This repository is addressed as submissions of the [technical assignment](https:
 
 # Information
 ## a) Environments
-* Linux environment
-* Docker
+* Linux environment (Ubuntu 20.04 LTS)
+* Docker (version 20.10.17)
 
 ## b) Container services that'll be created
 * Airflow Webserver (airflow-webserver)
