@@ -105,7 +105,7 @@ First, you need to go to http://localhost:5884/ to open the Airflow dashboard by
 -------------------------------------------------------
 
 ### b) Select 'data-pipeline' DAG
-Then, activate the 'data-pipeline' dag by clicking the switch button, the open the dag.
+Then, activate the 'data-pipeline' dag by clicking the switch button. After that, open the dag.
 
 ![](./images/airflow-dag.png "Airflow DAG")
 
